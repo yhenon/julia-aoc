@@ -4,7 +4,7 @@ function part1()
     arr = []
     srow = 0
     scol =0
-    open("inputs/day21_mini.txt") do f
+    open("inputs/day21.txt") do f
         for (col, l) in enumerate(eachline(f))
             push!(arr, l)
             if 'S' ∈ l
@@ -28,8 +28,9 @@ function part1()
             q_old = q2
             q_new = q1
         end
-        println(i-1, ',', length(q_old))
-
+        if i - 1 == 64
+            println(i-1, ',', length(q_old))
+        end
         while !isempty(q_old)
             (row, col, nym_steps) = dequeue!(q_old)
             for (dx, dy) in [(0, 1), (0, -1), (1, 0), (-1, 0)]
